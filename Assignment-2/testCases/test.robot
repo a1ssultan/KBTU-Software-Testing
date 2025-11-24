@@ -11,35 +11,32 @@ ${BROWSER}    chrome
 
 Login Test
     [Tags]    smoke
-    Open Browserstack Browser    ${BROWSER}
+    Open Saucedemo    ${BROWSER}
     Login With Valid Credentials
     Page Should Contain Element    ${INVENTORY_TITLE}
     Close Browser Session
 
-
 Invalid Login Test
     [Tags]    negative
-    Open Browserstack Browser    ${BROWSER}
+    Open Saucedemo    ${BROWSER}
     Input Text    ${LOGIN_USERNAME_FIELD}    wrong_user
     Input Text    ${LOGIN_PASSWORD_FIELD}    wrong_pass
     Click Button  ${LOGIN_BUTTON}
     Page Should Contain Element    ${LOGIN_ERROR_MESSAGE}
     Close Browser Session
 
-
 Add Product To Cart
     [Tags]    regression
-    Open Browserstack Browser    ${BROWSER}
+    Open Saucedemo    ${BROWSER}
     Login With Valid Credentials
     Click Button    ${ADD_TO_CART_BUTTON}
     Click Element   ${CART_ICON}
     Page Should Contain Element    ${ITEM_NAME}
     Close Browser Session
 
-
 Remove Product From Cart
     [Tags]    regression
-    Open Browserstack Browser    ${BROWSER}
+    Open Saucedemo    ${BROWSER}
     Login With Valid Credentials
     Click Button    ${ADD_TO_CART_BUTTON}
     Click Element   ${CART_ICON}
@@ -47,19 +44,17 @@ Remove Product From Cart
     Element Should Not Be Visible    ${ITEM_NAME}
     Close Browser Session
 
-
 Logout Test
     [Tags]    smoke
-    Open Browserstack Browser    ${BROWSER}
+    Open Saucedemo    ${BROWSER}
     Login With Valid Credentials
     Logout From Application
     Page Should Contain Element    ${LOGIN_BUTTON}
     Close Browser Session
 
-
 Verify Product Sorting Low To High
     [Tags]    regression
-    Open Browserstack Browser    ${BROWSER}
+    Open Saucedemo    ${BROWSER}
     Login With Valid Credentials
     Wait Until Element Is Visible    xpath://select[@data-test='product-sort-container']    timeout=5s
     Select From List By Value        xpath://select[@data-test='product-sort-container']    lohi
@@ -76,10 +71,9 @@ Verify Product Sorting Low To High
     Should Be Equal    ${price_values}    ${sorted}
     Close Browser Session
 
-
 Add Multiple Products To Cart
     [Tags]    regression
-    Open Browserstack Browser    ${BROWSER}
+    Open Saucedemo    ${BROWSER}
     Login With Valid Credentials
     Click Button    id:add-to-cart-sauce-labs-backpack
     Click Button    id:add-to-cart-sauce-labs-bike-light
@@ -94,7 +88,7 @@ Add Multiple Products To Cart
 
 UI Elements Visibility Test
     [Tags]    smoke
-    Open Browserstack Browser    ${BROWSER}
+    Open Saucedemo    ${BROWSER}
     Login With Valid Credentials
     Page Should Contain Element    xpath://div[@class='app_logo']
     Page Should Contain Element    xpath://div[@class='inventory_list']

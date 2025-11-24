@@ -4,11 +4,13 @@ Library    browserstack_helper.py
 Variables  ./testData.py
 Variables  ./locators.py
 
+*** Variables ***
+${DEFAULT_BROWSER}    chrome
+
 *** Keywords ***
 Open Saucedemo
-    Open Browser    ${BASE_URL}    chrome
-    Maximize Browser Window
-    Wait Until Page Contains Element    ${LOGIN_USERNAME_FIELD}
+    [Arguments]    ${BROWSER}=${DEFAULT_BROWSER}
+    Open Browserstack Browser    ${BROWSER}
 
 Open Browserstack Browser
     [Arguments]    ${BROWSER}=chrome
