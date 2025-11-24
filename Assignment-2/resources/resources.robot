@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Library    browserstack_helper.py
 Variables  ./testData.py
 Variables  ./locators.py
 
@@ -7,6 +8,13 @@ Variables  ./locators.py
 Open Saucedemo
     Open Browser    ${BASE_URL}    chrome
     Maximize Browser Window
+    Wait Until Page Contains Element    ${LOGIN_USERNAME_FIELD}
+
+Open Browserstack Browser
+    [Arguments]    ${BROWSER}=chrome
+    Create Browserstack Driver    ${BROWSER}
+    Maximize Browser Window
+    Go To    ${BASE_URL}
     Wait Until Page Contains Element    ${LOGIN_USERNAME_FIELD}
 
 Login With Valid Credentials
